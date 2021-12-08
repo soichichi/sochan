@@ -8,9 +8,9 @@ use App\Category;
 
 class PostController extends Controller
 {
-    public function index(Post $post)
+    public function index(Category $category)
     {
-        return view('posts/index')->with(['posts' => $post->getPaginateByLimit()]);  
+        return view('categories/index')->with(['posts' => $category->getByCategory()]); 
     }
     public function show(Post $post)
     {

@@ -1,7 +1,4 @@
 <!DOCTYPE html>
-@extends('layouts.app')
-
-@section('content')
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
@@ -15,15 +12,13 @@
     </head>
     
     <body>
-        {{Auth::user()->name}}
-        
         <h1>Blog Name</h1>
         <p class = 'create'>[<a href='/posts/create'>create</a>]</p>
         <div class = 'posts'>
             @foreach ($posts as $post)
                 <div class ='post'>
                     <a href = '/posts/{{ $post->id }}'><h2 class ='title'>{{ $post->title }}</h2></a>
-                    <a href="">{{ $post->category->name }}</a>
+                    <a href="/categories/{{ $post->category->id }}">{{ $post->category->name }}</a>
                     <p class ='body'>{{ $post->body }}</p>
                 </div>
             @endforeach
@@ -34,4 +29,3 @@
         </div>
     </body>
 </html>
-@endsection
